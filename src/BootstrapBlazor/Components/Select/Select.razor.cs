@@ -294,15 +294,15 @@ public partial class Select<TValue> : ISelect, ILookup
 
     private SelectedItem? GetSelectedRow()
     {
-        
+
         var canBeNull = ValueCanBeNull();
         var item = GetItemWithEnumValue()
             ?? Rows.Find(i => i.Value == CurrentValueAsString)
             ?? Rows.Find(i => i.Active)
-            ?? Rows.FirstOrDefault(i => !i.IsDisabled&&!canBeNull)
+            ?? Rows.FirstOrDefault(i => !i.IsDisabled && !canBeNull)
             ?? GetVirtualizeItem(CurrentValueAsString);
-      
-        
+
+
         if (item != null)
         {
             if (_init && DisableItemChangedWhenFirstRender)
@@ -579,11 +579,16 @@ public partial class Select<TValue> : ISelect, ILookup
         {
             await OnClearAsync();
         }
-        
+
         if (ValueCanBeNull())
         {
 
-            if (SelectedItem != null) SelectedItem.Active = false;
+            //if (SelectedItem != null) SelectedItem.Active = false;
+            if (Items != null)
+                foreach (var nowItems in Items)
+                {
+                    nowItems.Active = false;
+                }
             SelectedItem = null;
 
             // 触发 StateHasChanged

@@ -1,0 +1,27 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<Select @bind-Value="selectValue" Items="s_Items1" IsClearable></Select>
+<p>当前选中项<span class="text-danger">@selectValue</span></p>
+
+
+<Select @bind-Value="selectNotNullValue" Items="s_Items2" IsClearable></Select>
+<p>当前选中项<span class="text-danger">@selectNotNullValue</span></p>
+
+
+<Select @bind-Value="selectValueInt" Items="s_Items3" IsClearable></Select>
+<p>当前选中项<span class="text-danger">@selectValueInt</span></p>
+
+
+
+<Select @bind-Value="selectValueIntNull" Items="s_Items4" IsClearable></Select>
+<p>当前选中项<span class="text-danger">@selectValueIntNull</span></p>
+
+
+<Select @bind-Value="bindQueryValue" IsVirtualize OnQueryAsync="OnQueryAsync" IsClearable></Select>
+<p>当前选中项<span class="text-danger">@bindQueryValue</span></p>
